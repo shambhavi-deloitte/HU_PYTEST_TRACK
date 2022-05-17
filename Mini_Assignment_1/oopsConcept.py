@@ -12,6 +12,10 @@ class StringClass:
     def ConvertStringToList(self):
         return list(map(str, self.s))
 
+    def GetString(self):
+        return self.s
+
+
 class PairsPossible(StringClass):
     def __init__(self, arr):
         self.arr = arr
@@ -23,13 +27,13 @@ class PairsPossible(StringClass):
     def PrintAllPossiblePairs(self):
         for i in self.arr:
             print(list(i), end=' ')
-            print()
 
     def GetAllPossiblePairs(self):
         return self.arr
 
     def GetString(self):
         return self.s
+
 
 class SearchCommonElements:
     def __init__(self, s, s1, s2):
@@ -54,6 +58,7 @@ class SearchCommonElements:
                     dict2[c] += 1
                     res = [len(dict1), len(dict2)]
 
+
 class EqualSumPairs:
     def __init__(self, arr):
         self.arr = arr
@@ -69,3 +74,14 @@ class EqualSumPairs:
                 temp_counts.append(s)
                 print(res)
 
+
+SObj = StringClass("12314532")
+print(SObj.lengthOfString())
+print(SObj.ConvertStringToList())
+PObj = PairsPossible(SObj.ConvertStringToList())
+PObj.StoreAllPossiblePairs()
+PObj.PrintAllPossiblePairs()
+S2Obj = SearchCommonElements("testString", SObj.GetString(), PObj.GetString())
+S2Obj.SearchElements()
+EObj = EqualSumPairs(PObj.GetAllPossiblePairs())
+EObj.CountPairs()
