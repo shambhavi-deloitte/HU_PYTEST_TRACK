@@ -53,3 +53,19 @@ class SearchCommonElements:
                 else:
                     dict2[c] += 1
                     res = [len(dict1), len(dict2)]
+
+class EqualSumPairs:
+    def __init__(self, arr):
+        self.arr = arr
+
+    def CountPairs(self):
+        temp_counts = [];
+        res = 0
+        for pair in self.arr:
+            s = 0
+            s = int(list(pair)[0]) + int(list(pair)[1])
+            if s not in temp_counts:
+                res += 1;
+                temp_counts.append(s)
+                print(res)
+
