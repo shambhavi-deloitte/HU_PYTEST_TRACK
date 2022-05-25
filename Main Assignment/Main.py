@@ -18,3 +18,9 @@ def calculating_timings(ip_title):
 			if ':' in fs_split[0]:
 				fs_h = int(fs_split[0].split(':')[0])
 				fs_m = int(fs_split[0].split(':')[1])
+		total_delay_time = 0
+		total_delay_time += int(it.split('mins')[0])
+		total_delay_time += int(gap.split('mins')[0])
+		total_delay_time += total_minutes
+		temp = total_delay_time
+		all_timings.append([fs_h, fs_m])
