@@ -41,3 +41,44 @@ def calculating_timings(ip_title):
 				fs_m -= 60
 			all_timings.append([fs_h, fs_m])
 		return all_timings
+	info_names = ['Genre', 'Length', 'Cast', 'Director', 'Admin Rating', 'Language', 'Timings',
+				  'Number of Shows in a day', 'First Show', 'Interval Time', 'Gap Between Shows', 'Capacity']
+
+	u_fields = ['USERNAME', 'EMAIL', 'PHONE', 'AGE', 'PASSWORD']
+	users_data = [];
+	uname_pass = {'admin': 'admin'}
+	file_name = "C:\\Users\\shampriya\\Desktop\\user_data.csv"
+	with open(file_name, 'r') as csvfile:
+		csvreader = csv.reader(csvfile)
+		next(csvreader)
+		for row in csvreader:
+			if row != []:
+				users_data.append(row)
+				uname_pass[row[0]] = row[4]
+
+	movies_info_names = ['Title', 'Genre', 'Length', 'Cast', 'Director', 'Admin Rating', 'Language', 'Timings',
+						 'Number of Shows in a day', 'First Show', 'Interval Time', 'Gap Between Shows', 'Capacity']
+	all_movies_info = []
+	single_movie_info = {}
+	file_name = "C:\\Users\\shampriya\\Desktop\\movies_data.csv"
+	with open(file_name, 'r') as csvfile:
+		csvreader = csv.reader(csvfile)
+		fields = next(csvreader)
+		for row in csvreader:
+			try:
+				if row[0] != '' and row != []:
+					all_movies_info.append(row)
+					single_movie_info[row[0]] = row[1:]
+					if len(row) == 14:
+						movie_timings_seats[row[0]] = [calculating_timings(row[0]), int(row[12]), row[13]]
+					else:
+						movie_timings_seats[row[0]] = [calculating_timings(row[0]), int(row[12]), '']
+			except:
+				continue
+
+	def update_user_info():
+		file_name = "C:\\Users\\shampriya\\Desktop\\user_data.csv"
+		with open(file_name, 'w') as csvfile:
+			csvwriter = csv.writer(csvfile)
+			csvwriter.writerow(u_fields)
+			csvwriter.writerows(users_data)
