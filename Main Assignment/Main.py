@@ -24,3 +24,20 @@ def calculating_timings(ip_title):
 		total_delay_time += total_minutes
 		temp = total_delay_time
 		all_timings.append([fs_h, fs_m])
+		for i in range(int(nos) - 1):
+			total_delay_time = temp
+			while total_delay_time > 60:
+				if fs_h == 11:
+					fs_h = 0
+				else:
+					fs_h += 1
+				total_delay_time -= 60
+			fs_m += total_delay_time
+			if fs_m > 60:
+				if fs_h == 11:
+					fs_h = 0
+				else:
+					fs_h += 1
+				fs_m -= 60
+			all_timings.append([fs_h, fs_m])
+		return all_timings
