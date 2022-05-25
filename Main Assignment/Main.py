@@ -13,3 +13,8 @@ def calculating_timings(ip_title):
 		if ':' in fs_split[0]:
 			fs_h = int(fs_split[0].split(':')[0])
 			fs_m = int(fs_split[0].split(':')[1])
+		else:
+			fs_split = fs.split('PM')
+			if ':' in fs_split[0]:
+				fs_h = int(fs_split[0].split(':')[0])
+				fs_m = int(fs_split[0].split(':')[1])
