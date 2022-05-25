@@ -10,3 +10,6 @@ def calculating_timings(ip_title):
 	total_minutes=int(m)+int(h)*60
 	if 'AM' in fs:
 		fs_split=fs.split('AM')
+		if ':' in fs_split[0]:
+			fs_h = int(fs_split[0].split(':')[0])
+			fs_m = int(fs_split[0].split(':')[1])
